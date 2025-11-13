@@ -1,5 +1,5 @@
-title: "My personal website"
-author: "Mikhail (Misha) Bogdanov"
+title: "Mikhail (Misha) Bogdanov personal website"
+author: "Misha Bogdanov"
 description: "University Of British Columbia <3"
 permalink: /:title/
 lang: "en"
@@ -18,8 +18,9 @@ show_minimal: false             # remove all clutter
 # Menu                          # for available icons see https://fontawesome.com/v5/icons/
 
 navigation:                     # accepts {file, title, url, icon, sidebaricon}
-  - {file: "archive.html", title: Home Change, sidebaricon: home}
+  - {file: "archive.html", title: Home, sidebaricon: home}
   - {file: "README.md", title: About Me, sidebaricon: address-card}
+  - {file: "aboutMe.pdf", title: Projects, sidebaricon: address-card}
 
 external:                       # accepts {file, title, url, icon, sidebaricon}
   - {title: Mail, icon: envelope, url: "mailto:slomisha@gmail.com"}
