@@ -1,17 +1,249 @@
 ---
 layout: default
 title: "Home"
+hero:
+  name: "Mikhail (Misha) Bogdanov"
+  summary: "Hi, my name is Misha! Thank-you for checking out my personal page. If I were to do a brief introduction of who I am, I'd probably talk about my hobbies which include mountain biking, skiing, coding and a bit of videogames on the side. This year I competed in a mountain bike race series in whistler known as 'Phat Wednesdays', with my personal record being 17th out of 65 riders in the adult male category. I'm currently a fourth-year honors student pursuing a combined degree in Computer Science and Physics, and am actively seeking a full time position, remote or in person which  would let me apply my theoretical knowledge with practical experience in order to develop the beginning of my career. I have a deep seeded passion for writing high speed, scalable algorithms which I showcase in my work and personal projects. In addition, my interests extend to physics simulation, meshing  and UI design, as reflected in my creation of a game engine, chess engine and mobile applications. "
+  location: "Whistler, BC | Remote friendly | Willing to relocate"
+  availability: "Full-time | Grad June 2026"
+  phone: "604.966.4656"
+  email: "slomisha@gmail.com"
+  actions:
+    - label: "Email Me"
+      url: "mailto:slomisha@gmail.com"
+    - label: "GitHub"
+      url: "https://github.com/mishaBogdanov"
+  photo: "/assets/images/misha.png"
+  photo_alt: "Misha Bogdanov smiling inside a gondola"
+skills:
+  languages: ["C++","C","Java","Python","Dart","TypeScript"]
+  frameworks: ["OpenGL","Qt","Flutter","Firebase","Spring Boot","React"]
+  tools: ["Visual Studio","Linux","Photoshop","Illustrator","Premiere Pro"]
+experience:
+  - role: "Meshing Intern"
+    org: "Ansys (now Synopsys)"
+    period: "Jan 2025 - Aug 2025"
+    stack: "C++, Qt, Python"
+    highlights:
+      - "Translated ngmesh/G3D data into a research-grade internal structure to accelerate downstream solvers."
+      - "Co-built Prime, an internal meshing tool, to visualize and validate the converted models."
+      - "Added selective import workflows so engineers can isolate critical regions and cut GPU cost."
+  - role: "Research Assistant"
+    org: "Carl Ollivier-Gooch Lab, UBC"
+    period: "Sep 2025 - Apr 2026"
+    stack: "C++, Linux"
+    highlights:
+      - "Investigating high-speed algorithms for 3D surface mesh edge generation and detection."
+  - role: "Software Developer"
+    org: "PARSEC (UBC Student Space Initiative)"
+    period: "Sep 2025 - Apr 2026"
+    stack: "C++, Qt, OpenGL"
+    highlights:
+      - "Built telemetry tooling to stream microcontroller data into a custom OpenGL viewport."
+projects:
+  - name: "Constrained 2D Mesher"
+    period: "Jun 2025 - Present"
+    stack: ["C++","OpenGL"]
+    link: "https://github.com/mishaBogdanov/beginMeshing"
+    image: "/assets/images/meshingImg.png"
+    highlights:
+      - "Implemented a constrained mesher from scratch with tunable parameters."
+      - "Profiled the pipeline on large fine meshes to show near linear real world performance."
+      - "Implemented 2 distinct constraint enfocing algorithms, one which slices the existant triangles, and one which flips edges recursively ununtil the constraint is satisfied."
+      - "The core triangle generation is done by a modified Bowyer-Watson algorithm."
+      - "Created a custom graphics interface to debug my mesher as a separate dynamically linked library."
+      - "Future work will involve adding support for VTK file support and 3D meshing."
+  - name: "3D Physics Engine"
+    period: "Oct 2023 - Mar 2024"
+    stack: ["C++","OpenGL","Shaders"]
+    link: "https://github.com/mishaBogdanov/physicsEngine?tab=readme-ov-file"
+    image: "/assets/images/physEng.png"
+    highlights:
+      - "Implemented collision detection, impulse generation, and friction following Physics Engine Development."
+      - "Created a stylized terminal renderer driven by programmable shaders."
+      - "Showcase the capabilities of my engine by implementing a custom driving and flying controller, as well as custom maps with bsic destruction caused by exploding missiles."
+      - "Collision detection is done by Separating Axis Theorem (SAT) for convex objects, and bounding box checks for complex meshes."
+      - "Once I find that meshes are colliding, I generate contact points."
+      - "Once contact poiunts are generated, I create impulses to resolve the collisions and apply friction based on the constants of materials involved."
+  - name: "Chess Engine and Web UI"
+    period: "May 2023 - Sep 2023"
+    stack: ["C++","Java","TypeScript","React","Spring Boot"]
+    link: "https://github.com/mishaBogdanov/chessBot?tab=readme-ov-file"
+    image: "/assets/images/chess.png"
+    highlights:
+      - "Created a 1200-rated chess bot in C++ and a multithreaded Java port for coursework."
+      - "Built a React interface backed by Spring Boot to review current and past games."
+      - "The brain of the engine is handled by a min-max algorithm with a custom weight function that values material, position, and mobility."
+      - "Built a Java interface to allow players to make moves against the bot, as well as review past games with move-by-move analysis."
+  - name: "Social Media App"
+    period: "May 2017 - Aug 2018"
+    link: "https://youtu.be/pQSs7CiOBgI"
+    image: "/assets/images/appIcon.png"
+    stack: ["Dart","Flutter","Firebase"]
+    highlights:
+      - "Full-stack prototype to practice app development."
+      - "Used google authentication to authenticate users."
+      - "Google firestore to store message information, user information and post history in real-time."
+      - "Google storage to store post images and photos sent in chats."
+      - "Unfortunately the app was built before I began using Git, so don't have the code available currently."
+      - "A video demo is available."
+education:
+  school: "University of British Columbia"
+  degree: "Combined Honors - Computer Science & Physics"
+  notes: "Robotics Club & Shawnigan Lake School"
+  period: "Grad date - June 2026"
 ---
 
-{% if site.show_excerpts %}
-  {% for post in site.posts %}
-    <article>
-      {% include meta.html post=post %}
-      {{ post.excerpt }}
-      <footer class="button"><a href="{{ post.url | relative_url }}">read more</a></footer>
-    </article>
-  {% endfor %}
-{% else %}
-  {% capture source %}{% include_relative archive.html title="Posts" %}{% endcapture %}
-  {{ source | split: "---" | last }}
-{% endif %}
+<main class="landing">
+  <section class="hero card" id="top">
+    <div class="hero__content">
+      <p class="eyebrow">{{ page.hero.tagline }}</p>
+      <h1>{{ page.hero.name }}</h1>
+      <p class="subhead">{{ page.hero.summary }}</p>
+      {% if page.focus %}
+      <ul class="pill-list hero__focus">
+        {% for item in page.focus %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if page.hero.actions %}
+      <ul class="hero__actions">
+        {% for action in page.hero.actions %}
+        <li>
+          <a href="{% if action.url contains 'mailto:' or action.url contains 'http' %}{{ action.url }}{% else %}{{ action.url | relative_url }}{% endif %}">
+            {{ action.label }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="hero__details">
+      {% if page.hero.photo %}
+      <figure class="hero__media">
+        <img src="{{ page.hero.photo | relative_url }}" alt="{{ page.hero.photo_alt | default: page.hero.name }}">
+      </figure>
+      {% endif %}
+      <div class="hero__meta">
+        <div>
+          <span class="label">Location</span>
+          <span>{{ page.hero.location }}</span>
+        </div>
+        <div>
+          <span class="label">Availability</span>
+          <span>{{ page.hero.availability }}</span>
+        </div>
+        <div>
+          <span class="label">Email</span>
+          <span><a href="mailto:{{ page.hero.email }}">{{ page.hero.email }}</a></span>
+        </div>
+        <div>
+          <span class="label">Phone</span>
+          <span>{{ page.hero.phone }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="skills">
+    <p class="eyebrow">Technical Skills</p>
+    <h2>Tools I reach for</h2>
+    <div class="skills-grid">
+      <div>
+        <span class="label">Languages</span>
+        <ul class="pill-list">
+          {% for skill in page.skills.languages %}
+          <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <span class="label">Frameworks & API</span>
+        <ul class="pill-list">
+          {% for skill in page.skills.frameworks %}
+          <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <span class="label">Tools</span>
+        <ul class="pill-list">
+          {% for skill in page.skills.tools %}
+          <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="experience">
+    <p class="eyebrow">Experience</p>
+    <h2>Impact in industry and research</h2>
+    <div class="timeline">
+      {% for job in page.experience %}
+      <article class="timeline__item">
+        <h3>{{ job.role }}</h3>
+        <div class="timeline__meta">
+          <span>{{ job.org }}</span>
+          <span>{{ job.period }}</span>
+          <span>{{ job.stack }}</span>
+        </div>
+        <ul>
+          {% for highlight in job.highlights %}
+          <li>{{ highlight }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card" id="projects">
+    <p class="eyebrow">Projects</p>
+    <h2>Recent builds</h2>
+    <div class="project-grid">
+      {% for project in page.projects %}
+      {% if project.link %}
+      <a class="project-card project-card--link" href="{{ project.link }}" target="_blank" rel="noreferrer">
+      {% else %}
+      <article class="project-card">
+      {% endif %}
+        <div class="project-card__head">
+          <h3>{{ project.name }}</h3>
+          <span class="badge">{{ project.period }}</span>
+        </div>
+        {% if project.image %}
+        <figure class="project-card__media">
+          <img src="{{ project.image | relative_url }}" alt="{{ project.name }} preview">
+        </figure>
+        {% endif %}
+        <ul class="pill-list badge-list">
+          {% for tech in project.stack %}
+          <li>{{ tech }}</li>
+          {% endfor %}
+        </ul>
+        <ul class="project-card__bullets">
+          {% for highlight in project.highlights %}
+          <li>{{ highlight }}</li>
+          {% endfor %}
+        </ul>
+      {% if project.link %}
+      </a>
+      {% else %}
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card education-card" id="education">
+    <p class="eyebrow">Education</p>
+    <h2>{{ page.education.degree }}</h2>
+    <p class="subhead">{{ page.education.school }}</p>
+    <ul class="pill-list">
+      <li>{{ page.education.period }}</li>
+      <li>{{ page.education.notes }}</li>
+    </ul>
+  </section>
+</main>

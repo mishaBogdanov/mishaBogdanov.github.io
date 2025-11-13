@@ -3,23 +3,31 @@
 
 @import utils, basic, layout, classes, rouge_github
 
+$card-bg: #1f2336
+$card-text: #f4f6ff
+$muted: #98a2c7
+$accent: #7a8dff
+$pill-bg: rgba(#8793c9, .18)
+$pill-border: rgba(#b7c0e8, .45)
+$border-light: rgba(#000, .35)
+$border-strong: rgba(#000, .5)
+
 body
   background: light(93)
   background: light(93, 16)
-  padding: 0 calc(38% - 22rem)
+  padding: clamp(1rem, 4vw, 2.5rem) clamp(1.25rem, 7vw, 5.5rem)
 
 body > *
-  background: light(100)
-  background: light(100, 17)
-  color: light(0, 100)
-  padding: 1.75em calc(22% - 6rem)
-  padding: clamp(1.5em, 4vw, 1.75em) max(1.5em, 22% - 6rem)
+  background: #15192a
+  background: linear-gradient(180deg, #131728 0%, #171b2d 100%)
+  color: $card-text
+  padding: clamp(1.5rem, 3vw, 2.75rem) clamp(1.5rem, 6vw, 4.5rem)
   box-shadow: 0 -1px gray(10) inset, 0 0 1em light-dark(gray(10), transparent), 0 0 0 1px light-dark(transparent, light(26))
 
 body > header, body > footer
-  background: light(20)
-  background: light(20, 17)
-  color: light(100)
+  background: $card-bg
+  color: $card-text
+  border-radius: 1rem 1rem 0 0
 
 {% if site.show_frame contains "." %}
 
@@ -35,3 +43,252 @@ body > header, body > footer
       border-radius: 0 0 4px 4px
 
 {% endif %}
+
+main.landing
+  display: flex
+  flex-direction: column
+  gap: clamp(1.5rem, 3vw, 3rem)
+
+.card
+  border: 1px solid $border-light
+  border-radius: 1.25rem
+  background: $card-bg
+  color: $card-text
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(#000, .4), 0 0 50px rgba(#000, .35)
+  padding: clamp(1.5rem, 3vw, 2.4rem)
+
+section h2
+  margin: 0 0 .35rem
+
+.eyebrow
+  text-transform: uppercase
+  letter-spacing: .18em
+  font-size: .72em
+  color: $muted
+  margin: 0 0 .4rem
+
+.subhead
+  font-size: clamp(1rem, 1.4vw, 1.25rem)
+  color: mix($card-text, #c2c7de, 65%)
+  margin: 0 0 1rem
+
+.hero
+  display: grid
+  grid-template-columns: minmax(0, 2.4fr) minmax(18rem, 1fr)
+  gap: 2.5rem
+  align-items: start
+
+.hero__content
+  display: flex
+  flex-direction: column
+  gap: .75rem
+  min-width: 0
+
+.hero__actions
+  list-style: none
+  margin: 1.25rem 0 0
+  padding: 0
+  display: flex
+  flex-wrap: wrap
+  gap: .75rem
+  a
+    border: 1px solid transparent
+    border-radius: 50rem
+    padding: .45em 1.4em
+    text-decoration: none
+    font-weight: 600
+    color: #0f1220
+    background: $accent
+    &:hover
+      filter: brightness(1.1)
+
+.hero__details
+  display: flex
+  flex-direction: column
+  gap: 1.5rem
+  align-items: center
+  width: 100%
+
+.hero__media
+  margin: 0 auto
+  border-radius: 1.5rem
+  overflow: hidden
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(#0c1024, .35)
+  max-width: clamp(9rem, 28vw, 16rem)
+  img
+    display: block
+    width: 100%
+    height: auto
+    object-fit: cover
+    object-position: 45% 38%
+    transform: scale(1.2)
+
+.hero__meta
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr))
+  gap: .75rem
+  div
+    padding: .5rem 0
+    text-align: left
+    display: flex
+    flex-direction: column
+    gap: .25rem
+  a
+    color: inherit
+    text-decoration: underline
+    text-decoration-color: transparent
+    &:hover
+      text-decoration-color: currentColor
+  span
+    color: $card-text
+
+.label
+  font-size: .75em
+  text-transform: uppercase
+  letter-spacing: .08em
+  color: $muted
+
+.pill-list
+  list-style: none
+  margin: .5rem 0 0
+  padding: 0
+  display: flex
+  flex-wrap: wrap
+  gap: .5rem
+  li
+    border-radius: 50rem
+    background: $pill-bg
+    border: 1px solid $pill-border
+    padding: .3em .9em
+    font-size: .9em
+    color: mix($card-text, #c4cae3, 55%)
+
+.hero__focus
+  margin-top: 1rem
+
+.skills-grid
+  display: grid
+  gap: 1rem
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr))
+
+.timeline
+  display: flex
+  flex-direction: column
+  gap: 1.5rem
+
+.timeline__item
+  border-left: 2px solid $pill-border
+  padding-left: 1.5rem
+  position: relative
+  margin-left: .25rem
+  h3
+    margin: 0 0 .25rem
+  &::before
+    content: ""
+    position: absolute
+    width: .75rem
+    height: .75rem
+    left: -0.61rem
+    top: 0.35rem
+    border-radius: 50%
+    border: 2px solid $pill-border
+    background: $card-bg
+
+.timeline__meta
+  font-size: .95em
+  color: $muted
+  display: flex
+  flex-wrap: wrap
+  gap: 1rem
+  margin: .35rem 0 .75rem
+
+.timeline__item ul,
+.project-card__bullets
+  margin: 0
+  padding-left: 1.1rem
+  color: mix($card-text, #dfe4ff, 45%)
+  li
+    margin-bottom: .3rem
+
+.project-grid
+  display: grid
+  gap: 1.25rem
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr))
+
+.project-card
+  border: 1px solid $border-light
+  border-radius: .95rem
+  padding: 1.25rem
+  background: #22273b
+  color: $card-text
+  display: block
+  position: relative
+  text-decoration: none
+  &::after
+    content: ""
+    display: block
+    clear: both
+
+.project-card--link
+  transition: transform .25s ease, box-shadow .25s ease
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: 0 1.8rem 3.2rem -1.2rem rgba(#000, .55)
+
+.project-card__media
+  margin: 0
+  border-radius: 1rem
+  overflow: hidden
+  box-shadow: none
+  max-height: 12rem
+  width: clamp(9rem, 40%, 12rem)
+  float: right
+  margin: 0 0 1rem 1.25rem
+  img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: 50% 45%
+    border-radius: inherit
+
+.project-card__head
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  gap: .75rem
+  margin-bottom: .75rem
+  h3
+    margin: 0
+
+.badge
+  font-size: .75em
+  text-transform: uppercase
+  letter-spacing: .08em
+  color: $muted
+  white-space: nowrap
+
+.badge-list
+  margin: 0
+  li
+    font-size: .8em
+
+.education-card .pill-list
+  margin-top: .25rem
+
+@media (max-width: 56em)
+  .hero
+    grid-template-columns: 1fr
+  .hero__details
+    align-items: stretch
+    text-align: left
+    .hero__media
+      max-width: 12rem
+      margin: 0
+  .project-card__media
+    float: none
+    width: 100%
+    max-height: none
+    margin: 0 0 1rem 0
+    img
+      height: auto
