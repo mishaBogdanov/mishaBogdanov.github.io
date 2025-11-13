@@ -20,12 +20,12 @@ show_minimal: false             # remove all clutter
 navigation:                     # accepts {file, title, url, icon, sidebaricon}
   - {file: "archive.html", title: Home, sidebaricon: home}
   - {file: "README.md", title: About Me, sidebaricon: address-card}
-  - {file: "resumeUpdated.pdf", title: Resume, sidebaricon: address-card}
+  - {file: "ResumeUpdated.pdf", title: Resume, sidebaricon: address-card}
   - {file: "aboutMe.pdf", title: Projects, sidebaricon: address-card}
 
 external:                       # accepts {file, title, url, icon, sidebaricon}
   - {title: Mail, icon: envelope, url: "mailto:slomisha@gmail.com"}
-  - {title: Github, icon: github, url: "https://github.students.cs.ubc.ca/mbogdano"}
+  - {title: Github, icon: github, url: "https://github.com/mishaBogdanov"}
 
 comments:
 #  disqus_shortname: ""         # see https://disqus.com
